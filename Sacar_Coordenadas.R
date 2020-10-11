@@ -1,0 +1,17 @@
+library(devtools)
+library(remotes)
+library(tidyverse)
+library(readr)
+library(rt.test)
+library(ggmap)
+library(dplyr)
+library(readr)
+
+setwd("~/Documents/Esc/Todos_Inmo")
+Inmo <- read_csv("~/Documents/Esc/Todos_Inmo/Inmo_150519_221019.csv")
+Datos<-Inmo
+key <- register_google(key ="AIzaSyDHXFUFagouyIImCPcR0jQsYxCfUfkvZQQ&callback=initMap")
+Datos_Coord<-mutate_geocode(Datos, direccion2)
+setwd("~/Documents/Esc/Todos_Inmo")
+espa<-file('Inmo_150519_221019_Coorde.csv',encoding="UTF-8")
+write.csv(Datos_Coord, file = "Inmo_150519_221019_Coorde.csv", fileEncoding = "UTF-8")
